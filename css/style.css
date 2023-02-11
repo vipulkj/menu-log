@@ -307,6 +307,11 @@ a {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         justify-content: space-between;
         align-items: center;
+        position: relative;
+        z-index: 501;
+        position: sticky;
+        background-color: #fff;
+        top: 0;
     }
     .header .menu .mobile-menu-head .go-back{
         height: 50px;
@@ -318,6 +323,9 @@ a {
         color: #000;
         font-size: 16px;
         display: none;
+    }
+    .header .menu .mobile-menu-head.active .go-back{
+        display: block;
     }
     .header .menu .mobile-menu-head .current-menu-title{
         font-size: 15px;
@@ -339,16 +347,56 @@ a {
         overflow-x: hidden;
         overflow-y: auto;
     }
+    .header .menu ul li .sub-menu.mega-menu,
     .header .menu ul li .sub-menu{
-        background-color: gray;
+        /* background-color: gray; */
         visibility: visible;
         opacity: 1;
-        position: relative;
+        position: absolute;
         box-shadow: none;
         margin: 0;
+        padding: 15px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding-top: 65px;
+        max-width: none;
+        min-width: auto;
+        display: none;
+        transform: translateX(0%);
+        overflow-y: auto;
     }
+    .header .menu ul li .sub-menu.active{
+        display: block;
+    }
+    @keyframes slideleft {
+        0%{
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        100%{
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+    .header .menu ul li .sub-menu.mega-menu-column-4{
+        padding: 15px;
+    }
+    .header .menu ul li .sub-menu.mega-menu-column-4 .list-item img{
+        margin-top: 30px;
+    }
+
     .header .menu ul li .sub-menu.mega-menu-column-4 .list-item{
         flex: 0 0 100%;
-        padding: 0;
+        padding: 40px 0 20px;
     }
+    .header .menu ul li .sub-menu ul li a,
+    .header .menu ul li .sub-menu.mega-menu .list-item ul li a{
+        display: block;
+    }
+    .header .menu ul li .sub-menu.mega-menu .list-item ul{
+        margin-bottom: 15px;
+    }
+
 }
