@@ -201,7 +201,7 @@ a {
     width: 100%;
     display: block;
 }
-
+/* .menu-overlay, */
 .mobile-menu-head,
 .mobile-menu-trigger {
     display: none;
@@ -269,14 +269,19 @@ a {
         position: fixed;
         width: 320px;
         background-color: #fff;
-        box-shadow: 0 0 15px #ccc;
+        /* box-shadow: 0 0 15px #ccc; */
         left: 0;
         top: 0;
         bottom: 0;
         height: 100%;
         overflow: hidden;
+        transform: translate(-100%);
+        transition: all 0.5s ease;
+        z-index: 1099;
     }
-
+    .header .menu.active{
+        transform: translate(0%);
+    }
     .header .menu ul li {
         line-height: 1;
         margin: 0;
@@ -380,17 +385,27 @@ a {
             transform: translateX(0%);
         }
     }
-    .header .menu ul li .sub-menu.mega-menu-column-4{
-        padding: 15px;
+    @keyframes slideright {
+        0%{
+            opacity: 1;
+            transform: translateX(0%);
+        }
+        100%{
+            opacity: 0;
+            transform: translateX(100%);
+        }
     }
-    .header .menu ul li .sub-menu.mega-menu-column-4 .list-item img{
+    .header .menu ul li .sub-menu.mega-menu-column-4{
+        padding: 10px;
+    }
+    .header .menu ul li .sub-menu.mega-menu-column-4 .list-item {
+        flex: 0 0 100%;
         margin-top: 30px;
     }
-
-    .header .menu ul li .sub-menu.mega-menu-column-4 .list-item{
-        flex: 0 0 100%;
-        padding: 40px 0 20px;
+    .header .menu ul li .sub-menu.mega-menu-column-4 .list-item.text-center:last-child .title{
+        margin-bottom: 0px;
     }
+
     .header .menu ul li .sub-menu ul li a,
     .header .menu ul li .sub-menu.mega-menu .list-item ul li a{
         display: block;
@@ -398,5 +413,21 @@ a {
     .header .menu ul li .sub-menu.mega-menu .list-item ul{
         margin-bottom: 15px;
     }
-
+    .menu-overlay{
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1098;
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    .menu-overlay.active{
+        visibility: visible;
+        opacity: 1;
+    }
 }
